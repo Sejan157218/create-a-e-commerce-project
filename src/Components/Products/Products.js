@@ -17,6 +17,8 @@ const Products = (props) => {
     const handlerForDetails=()=>{
       history.push(`/product/${id}`)
     }
+
+    
     return (
     <Card sx={{ maxWidth: 345}}>
       <CardMedia
