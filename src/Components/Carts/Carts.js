@@ -59,29 +59,41 @@ const Carts = () => {
 
     const quantity = (previous,current) =>previous + current.quantity
    const totalCount =products.reduce(quantity,0); 
-    const totalPrice =products.reduce((previous,current) =>previous + current.price,0)
+    const totalPrice =products.reduce((previous,current) =>previous + (current.price*current.quantity),0);
+
    
     return (
       <div>
       {['right',].map((anchor) => (
-        <React.Fragment key={anchor}>
+        <React.Fragment key={anchor} className="div-margin">
           <Button className="cart-icon-btn" onClick={toggleDrawer(anchor, true)}>{cartIcon} : </Button>
           <Drawer
+            
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
-          >  <h1>My cart</h1>
-            <h1>total count : {totalCount}</h1>
-            <h1>total price : {totalPrice.toFixed(2)}</h1>
+          >  
+          <div className="div-margin">
+          <h1>My cart</h1>
           
+          <div className="product-cart">
           {
             
             products.map(product=><Cart product={[product]}></Cart>)
+            
           }
+          </div>
+           <div className='total-price'>
+           <h5>Subtotal  : ${totalPrice.toFixed(2)}</h5>
+            <h5>Total : ${totalPrice.toFixed(2)}</h5>
+           </div>
+          </div>
             {list(anchor)}
           </Drawer>
         </React.Fragment>
       ))}
+
+        
     </div>
     );
 };

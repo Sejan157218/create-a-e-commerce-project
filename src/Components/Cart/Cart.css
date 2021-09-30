@@ -1,0 +1,13 @@
+.icon-add{
+    border: 1px;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: none;
+    padding: 0px;
+}
+.quantity{
+    padding: .5rem;
+}
+.icon-add :hover{
+    border: 1px solid black;
+}
