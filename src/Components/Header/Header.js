@@ -2,7 +2,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../img/logo.png'
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Form, FormControl, Navbar } from 'react-bootstrap';
 
   
@@ -26,7 +25,6 @@ const Header = () => {
                     aria-label="Search"
                 />
                 </Form>
-                <ShoppingCartIcon/>
             </Navbar.Collapse>
             </Navbar>
     );

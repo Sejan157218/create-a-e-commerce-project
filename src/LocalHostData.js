@@ -11,15 +11,17 @@ const  addToData = id=>{
 
 const removeToData = id=>{
     const data = getData();
-    if(id in data && data[id]>1){
+    if(id in data && data[id]>0){
         data[id] -=1
-    }
-    else{
-        delete data[id];
     }
     savedToData(data)
 }
 
+const deleteData= id => {
+    const DeleteData = getData();
+    delete DeleteData[id];
+    savedToData(DeleteData)
+}
 
 const savedToData = data=>{
     localStorage.setItem('Shopping-cart',JSON.stringify(data))
@@ -30,4 +32,4 @@ const getData=()=>{
     return data ? JSON.parse(data) : {};
 }
 
-export {addToData,removeToData,getData}
+export {addToData,removeToData,getData,deleteData}

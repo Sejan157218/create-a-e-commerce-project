@@ -1,23 +1,20 @@
-import { Card, CardContent, CardMedia, Divider, Typography } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Button from '@restart/ui/esm/Button';
 import React from 'react';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
-import './Cart.css'
-import { addToData, removeToData } from '../../LocalHostData';
+import DeleteIcon from '@mui/icons-material/Delete';
+import './Cart.css';
+
+
+
 const Cart = (props) => {
   //  const {product} = props;
   //  const quantity = (previous,current) =>previous + current.quantity
   //  const totalCount =product.reduce(quantity,0); 
     const {title,image,price,quantity} = props.product[0];
-    const handlerToCart=item=>{
-      item.quantity = 1;
-      addToData(item.id)
-    }  
-    const handlerToRemove=(item)=>{
-      removeToData(item.id)
-    } 
+   
     return (
         <Card sx={{ display: 'flex',mb :2 }}>
           <CardMedia
@@ -36,9 +33,14 @@ const Cart = (props) => {
             ${price} x {quantity}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
-          <Button className="icon-add" onClick={()=>handlerToRemove(props.product[0])}> <RemoveIcon fontSize="small"/></Button>
+          <div>
+          <Button className="icon-add" onClick={()=>props.handlerToRemove(props.product[0])}> <RemoveIcon fontSize="small"/></Button>
             <span className='quantity'>{quantity}</span>
-          <Button className="icon-add" onClick={()=>handlerToCart(props.product[0])}><AddIcon fontSize="small"/> </Button>
+          <Button className="icon-add" onClick={()=>props.handlerToCart(props.product[0])}><AddIcon fontSize="small"/> </Button>
+          </div>
+          <div>
+          <Button className="icon-add" onClick={()=>props.handlerToDelete(props.product[0])}><DeleteIcon fontSize="small"/> </Button>
+          </div>
           </Typography>
         </CardContent>
       </Box>

@@ -14,6 +14,7 @@ function App() {
     <div className="App container">
       <Router>
         <Header/>
+        <Carts></Carts>
         <Switch>
           <Route exact path="/home">
           <AllProducts></AllProducts>
